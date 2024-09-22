@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import styles from './AddTodo.module.css';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function AddTodo({ onCreate }) {
   const [content, setContent] = useState('');
-  let ref = useRef(3);
 
   const handleOnChange = (e) => {
     setContent(e.target.value);
@@ -16,7 +16,7 @@ export default function AddTodo({ onCreate }) {
       return;
     }
 
-    onCreate({ id: ref.current++, content, status: 'active' });
+    onCreate({ id: uuidv4(), content, status: 'active' });
     setContent('');
   };
 
