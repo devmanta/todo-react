@@ -21,14 +21,17 @@ export default function AddTodo({ onCreate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <input
         type="text"
         placeholder="Add Todo"
         value={content}
         onChange={handleOnChange}
+        className={styles.input}
       />
-      <button type="submit">Add</button>
+      <button type="submit" className={styles.button}>
+        Add
+      </button>
     </form>
   );
 }

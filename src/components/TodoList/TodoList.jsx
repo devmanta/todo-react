@@ -33,9 +33,9 @@ export default function TodoList({ filter }) {
   const filteredTodos = getFilteredTodos(todos, filter);
 
   return (
-    <div>
-      <section>
-        <ul>
+    <>
+      <section className={styles.container}>
+        <ul className={styles.list}>
           {filteredTodos.map((todo) => (
             <Todo
               key={todo.id}
@@ -47,7 +47,7 @@ export default function TodoList({ filter }) {
         </ul>
       </section>
       <AddTodo onCreate={onCreate} />
-    </div>
+    </>
   );
 }
 
