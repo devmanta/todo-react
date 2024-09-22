@@ -3,7 +3,7 @@ import Todo from '../Todo/Todo';
 import styles from './TodoList.module.css';
 import AddTodo from '../AddTodo/AddTodo';
 
-export default function TodoList() {
+export default function TodoList({ filter }) {
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -30,11 +30,13 @@ export default function TodoList() {
     setTodos(todos.map((todo) => (todo.id === updated.id ? updated : todo)));
   };
 
+  const filteredTodos = getFilteredTodos(todos, filter);
+
   return (
-    <>
+    <div>
       <section>
         <ul>
-          {todos.map((todo) => (
+          {filteredTodos.map((todo) => (
             <Todo
               key={todo.id}
               todo={todo}
@@ -45,6 +47,14 @@ export default function TodoList() {
         </ul>
       </section>
       <AddTodo onCreate={onCreate} />
-    </>
+    </div>
   );
+}
+
+function getFilteredTodos(todos, filter) {
+  if (filter === 'all') {
+    return todos;
+  }
+
+  return todos.filter((todo) => todo.status === filter);
 }
