@@ -22,12 +22,25 @@ export default function TodoList() {
     setTodos([...todos, newTodo]);
   };
 
+  const onDelete = (targetId) => {
+    setTodos(todos.filter((todo) => todo.id !== targetId));
+  };
+
+  const onUpdate = (updated) => {
+    setTodos(todos.map((todo) => (todo.id === updated.id ? updated : todo)));
+  };
+
   return (
     <>
       <section>
         <ul>
           {todos.map((todo) => (
-            <li key={todo.id}>{todo.content}</li>
+            <Todo
+              key={todo.id}
+              todo={todo}
+              onDelete={onDelete}
+              onUpdate={onUpdate}
+            />
           ))}
         </ul>
       </section>
