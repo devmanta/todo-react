@@ -25,6 +25,8 @@ body {
     rgba(81, 87, 111, 1) 0%,
     rgba(60, 61, 69, 1) 100%
   );
+  accent-color: var(--color-accent);
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 ul {
